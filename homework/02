@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>光景 ｜ 攝影日誌 v1.0</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ===== 頁首 ===== -->
+  <header class="site-head">
+    <div class="wrap">
+      <div class="brand">
+        <span class="brand-mark">光</span>
+        <div>
+          <h1 class="brand-name">光景</h1>
+          <p class="brand-sub">我的攝影日誌</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 工具列 ===== -->
+  <div class="toolbar">
+    <div class="wrap toolbar-inner">
+      <div class="search">
+        <span class="search-ico" aria-hidden="true">⌕</span>
+        <input type="search" id="search" placeholder="搜尋日誌…" aria-label="搜尋日誌" />
+      </div>
+      <div class="tools">
+        <button class="btn btn-ghost" id="btn-export" title="匯出 JSON">匯出</button>
+        <button class="btn btn-ghost" id="btn-import" title="匯入 JSON">匯入</button>
+        <button class="btn btn-primary" id="btn-new">＋ 寫日誌</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 日誌列表 ===== -->
+  <main class="wrap feed" id="feed">
+    <!-- 由 journal.js 動態產生 -->
+  </main>
+
+  <footer class="site-foot wrap">
+    <span>光景 · 攝影日誌</span>
+    <span class="ver">v1.0 — 基礎日誌</span>
+  </footer>
+
+  <!-- ===== 編輯器 Modal ===== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 class="modal-title" id="modal-title">寫一篇日誌</h2>
+
+      <div class="field">
+        <label class="label" for="f-title">標題</label>
+        <input class="input" type="text" id="f-title" placeholder="今天想記下什麼？" />
+      </div>
+
+      <div class="field">
+        <label class="label" for="f-photo">照片（選填）</label>
+        <input type="file" id="f-photo" accept="image/*" class="file-input" />
+        <div class="preview" id="preview" hidden>
+          <img id="preview-img" alt="預覽" />
+          <button type="button" class="preview-clear" id="preview-clear">移除照片</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="f-content">內文</label>
+        <textarea class="input" id="f-content" placeholder="寫下當下的光、場景與心情…"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" data-close>取消</button>
+        <button class="btn btn-primary" id="btn-save">儲存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 匯入用的隱藏 file input -->
+  <input type="file" id="import-file" accept="application/json,.json" hidden />
+
+  <script src="journal.js"></script>
+</body>
+</html>
